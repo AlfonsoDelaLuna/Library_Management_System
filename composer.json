@@ -1,0 +1,6 @@
+{
+  "name": "dellg15/library_management",
+  "require": {
+    "phpoffice/phpspreadsheet": "^1.29"
+  }
+}
