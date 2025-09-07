@@ -43,11 +43,11 @@ During my OJT, my members and I are tasked to solve the issue to create a librar
 
 ## Notes
 
-- The `uploads/` directory stores uploaded images for books and user profiles.
+- The `uploads/` directory stores uploaded images for books and user profiles that will shown in the student dashboard.
 - The `image/` and `images/` directories contain various images used in the system's interface.
 - `db_connection.php` contains the database connection details.
 - `admin_dashboard.php` is the main page for administrators.
-- `student_dashboard.php` is the main page for students.
+- `student_dashboard.php` is the main page for the student to write their student number.
 - `login.php` is the login page.
 - `logout.php` is the logout page.
 - `library_management.sql` is the database schema.
