@@ -1,6 +1,6 @@
 # Library Management System
 
-This is a library management system built using PHP, HTML, CSS, and JavaScript to keep track of students who access the library. It helps librarians to monitor how frequently a student enters the library and store the login sheet for documentation. 
+It is a web-based application developed using PHP, HTML, CSS, and JavaScript that records and manages students’ time in and time out when accessing the library. It provides librarians with an efficient way to monitor student attendance and track how long each student spends in the library. Instead of relying on manual log sheets, the system automatically captures entry and exit times, stores the data securely in a database, and allows librarians to retrieve attendance records easily for documentation or analysis. This helps improve accuracy, save time, and maintain organized digital records of library usage.
 
 ## Process Before
 
