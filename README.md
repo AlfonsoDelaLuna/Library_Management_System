@@ -8,14 +8,12 @@ Before, there was already an existing library system in our school. When enterin
 After a long period of use, the library management system has begun to malfunction. Specifically, when a user enters their student number to log in or log out, the data is not stored correctly and therefore is not recorded in the admin’s Excel file. To address this issue, the librarian decided to create a paper-based authentication system to maintain operations. Additionally, the log-out feature was removed because during lunch breaks or at closing time, long queues would form, causing significant delays in the process.
 
 ## Objectives
-
 During my OJT, my members and I are tasked to solve the issue to create a library management system using these objectives:
 1. Data transfer from user data to admin - The main objective is that when a user types their student number, it will save that data to the admin side of that system. 
 2. Availability to download - The admin can easily download their login data via Excel for documentation.
 3. Removal of logout - The admin requested to remove the logout feature for the students due to the long queue during lunch breaks or closing.
 
 ## Setup
-
 1.  **Database Setup:**
     - Import the `library_management.sql` file into your MySQL database using a tool like phpMyAdmin or MySQL Workbench. This will create the necessary tables and initial data for the library management system.
 2.  **Configuration:**
@@ -26,13 +24,11 @@ During my OJT, my members and I are tasked to solve the issue to create a librar
     - Open your browser and navigate to the directory where you placed the files. You should be able to access the login page of the library management system.
 
 ## Features
-
 - **Admin Dashboard:** Provides an interface for administrators to manage time in for the users upload and download data via excel or pdf.
 - **Student Dashboard:** Provides an interface for students to view to time in.
 - **Image Uploading:** Allows administrators to upload images to be provided in the student dashboard.
 
 ## Technologies Used
-
 - PHP
 - HTML
 - CSS
@@ -40,7 +36,6 @@ During my OJT, my members and I are tasked to solve the issue to create a librar
 - MySQL
 
 ## Notes
-
 - The `uploads/` directory stores uploaded images for books and user profiles that will shown in the student dashboard.
 - The `image/` and `images/` directories contain various images used in the system's interface.
 - `db_connection.php` contains the database connection details.
