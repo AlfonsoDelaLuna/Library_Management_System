@@ -5,7 +5,7 @@ It is a web-based application developed using PHP, HTML, CSS, and JavaScript tha
 Before, there was already an existing library system in our school. When entering the library, the user needs to type their student number in the login textbox to access their books. When the student is ready to leave, whether due to their next class, break time, or closing, they must type their student number again to log out of the text box. The user's login and logout data are stored in the admin via Excel for documentation.
 
 ## Problem Encountered
-After a long period of use, the library management system has begun to malfunction. Specifically, when a user enters their student number to log in or log out, the data is not stored correctly and therefore is not recorded in the admin’s Excel file. To address this issue, the librarian decided to create a paper-based authentication system to maintain operations. Additionally, the log-out feature was removed because during lunch breaks or at closing time, long queues would form, causing significant delays in the process.
+After a long period of use, the library management system has begun to malfunction. Specifically, when a user enters their student number to log in or log out, the data is not stored correctly and therefore is not recorded in the admin’s Excel file. To address this issue, the librarian decided to create a paper-based authentication system to maintain operations. Additionally, the librarian requested the students to not log-out because during lunch breaks or at closing time, long queues would form, causing significant delays in the process.
 
 ## Objectives
 During my OJT, my members and I are tasked to solve the issue to create a library management system using these objectives:
