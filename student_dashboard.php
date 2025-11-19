@@ -23,7 +23,7 @@ function get_image_path($student_number, $uploads_dir = 'uploads')
 if (isset($_GET['student_number'])) {
     $student_number = $_GET['student_number'];
 
-    if (strlen($student_number) != 11 || !ctype_digit($student_number) || (substr($student_number, 0, 4) != '0200' && substr($student_number, 0, 5) != '10000')) {
+    if (strlen($student_number) != 11 || !ctype_digit($student_number) || (substr($student_number, 0, 5) != '02000' && substr($student_number, 0, 5) != '10000')) {
         echo json_encode(['error' => 'Invalid student number format.']);
         exit();
     }
@@ -52,8 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
     $action = $_POST['action'];
     $time_in_out_message = "";
 
-    if (strlen($student_number) != 11 || !ctype_digit($student_number) || (substr($student_number, 0, 4) != '0200' && substr($student_number, 0, 5) != '10000')) {
-        $student_number_error = "Student number must be 11 digits, contain only numbers, and start with 0200 or 10000.";
+    if (strlen($student_number) != 11 || !ctype_digit($student_number) || (substr($student_number, 0, 5) != '02000' && substr($student_number, 0, 5) != '10000')) {
+        $student_number_error = "Student number must be 11 digits, contain only numbers, and start with 02000 or 10000.";
         $time_in_out_message = "<div class='message error'>" . htmlspecialchars($student_number_error) . "</div>";
     } else {
         $student_stmt = $conn->prepare("SELECT last_name, first_name, middle_name, course FROM students WHERE student_number = ?");
@@ -69,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
             $student_data = $student_result->fetch_assoc();
             $student_stmt->close();
             $student_data['image_url'] = get_image_path($student_number);
+            $_SESSION['student_data'] = $student_data;
 
             $last_name = $student_data['last_name'];
             $first_name = $student_data['first_name'];
@@ -99,19 +100,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
 
     $_SESSION['student_number_error'] = $student_number_error;
     $_SESSION['time_in_out_message'] = $time_in_out_message;
-    unset($_SESSION['student_data']);
+    // DO NOT immediately unset student_data so info persists
+    // unset($_SESSION['student_data']);
 }
 
 $student_number_error = $_SESSION['student_number_error'] ?? '';
 $time_in_out_message = $_SESSION['time_in_out_message'] ?? '';
 
-if (isset($_SESSION['student_data'])) {
+if (isset($_SESSION['student_data']) && is_array($_SESSION['student_data']) && !empty($_SESSION['student_data'])) {
     $student_data = $_SESSION['student_data'];
 }
 
 unset($_SESSION['student_number_error']);
 unset($_SESSION['time_in_out_message']);
-unset($_SESSION['student_data']);
+// DO NOT immediately unset student_data so info persists
+// unset($_SESSION['student_data']);
 
 ?>
 <!DOCTYPE html>
@@ -487,7 +490,7 @@ unset($_SESSION['student_data']);
             loadingIndicator.style.display = 'block';
             adjustableContainer.classList.remove('hidden');
 
-            if (studentNumber.length !== 11 || !/^\d+$/.test(studentNumber) || (!studentNumber.startsWith('0200') && !studentNumber.startsWith('10000'))) {
+            if (studentNumber.length !== 11 || !/^\d+$/.test(studentNumber) || (!studentNumber.startsWith('02000') && !studentNumber.startsWith('10000'))) {
                 loadingIndicator.style.display = 'none';
                 return;
             }

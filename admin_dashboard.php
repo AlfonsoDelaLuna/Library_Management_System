@@ -66,6 +66,66 @@ if (isset($_POST['download_excel_login'])) {
             $row++;
         }
 
+        // New Header Style
+$headerStyleArray = [
+    'font' => [
+        'bold' => true,
+        'color' => ['argb' => 'FFFFFFFF'], // White text
+        'size' => 12,
+    ],
+    'fill' => [
+        'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+        'startColor' => ['argb' => 'FF0070C0'], // Deep blue background
+    ],
+    'borders' => [
+        'allBorders' => [
+            'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM,
+            'color' => ['argb' => 'FF000000'],
+        ],
+    ],
+    'alignment' => [
+        'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+        'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,
+    ],
+];
+
+// Apply header style
+$sheet->getStyle('A1:G1')->applyFromArray($headerStyleArray);
+
+// Apply border and alignment to data rows
+$rowCount = $sheet->getHighestRow(); // Get last row number
+for ($row = 2; $row <= $rowCount; $row++) {
+    $dataStyleArray = [
+        'borders' => [
+            'allBorders' => [
+                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                'color' => ['argb' => 'FF000000'],
+            ],
+        ],
+        'alignment' => [
+            'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
+        ],
+    ];
+
+    $sheet->getStyle('A' . $row . ':G' . $row)->applyFromArray($dataStyleArray);
+    
+    // Alternating row colors
+    if ($row % 2 == 0) {
+        $sheet->getStyle('A' . $row . ':G' . $row)->applyFromArray([
+            'fill' => [
+                'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                'startColor' => ['argb' => 'FFE0E0E0'] // Light gray
+            ],
+        ]);
+    }
+}
+
+// Auto size columns
+foreach (range('A', 'G') as $column) {
+    $sheet->getColumnDimension($column)->setAutoSize(true);
+}
+        // END FORMATTING
+
         $writer = new Xlsx($spreadsheet);
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment;filename="login_records.xlsx"');
@@ -1782,8 +1842,6 @@ if (isset($_POST['add_student'])) {
                 }
             });
         });
-
-
 
         function downloadPDF() {
             const {
