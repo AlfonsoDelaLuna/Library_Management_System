@@ -1,3 +1,4 @@
+
 # Library Management System
 It is a web-based application that records and manages students’ time in when accessing the library. It provides librarians with an efficient way to monitor student attendance and track how long each student spends in the library. Instead of relying on manual log sheets, the system automatically captures entry and exit times, stores the data securely in a database, and allows librarians to retrieve attendance records easily for documentation. This helps improve accuracy, save time, and maintain organized digital records of library usage.
 
