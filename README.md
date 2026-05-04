@@ -34,7 +34,6 @@ During my OJT, my members and I are tasked to solve the issue to create a librar
 - CSS
 - JavaScript
 - MySQL
-
 ## Notes
 - The `uploads/` directory stores uploaded images for books and user profiles that will shown in the student dashboard.
 - The `image/` and `images/` directories contain various images used in the system's interface.
